@@ -3,6 +3,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { NewApiService } from './js/fetchFood';
 import { dataCardTemp } from './js/dataCardTemp';
+
 console.log(SimpleLightbox);
 
 const gallery = document.querySelector('.gallery');
@@ -67,6 +68,7 @@ function noticeDeclaretion(value) {
 
 function newNotice(value) {
   if (value.hits.length < 40) {
+    btn.remove();
     Notiflix.Notify.info(
       "We're sorry, but you've reached the end of search results."
     );
@@ -79,7 +81,7 @@ function disableBtn(btnForm, formGallery) {
   let input = formGallery.firstElementChild;
   input.addEventListener('input', e => {
     const target = e.target.value;
-    console.log(target);
+    cleanImg();
     if (target == '') {
       cleanImg();
     } else {
