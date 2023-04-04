@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/switcher.css" />
   </head>
   <body>
     <div class="wrapp">
@@ -18,11 +19,18 @@
             placeholder="Search images..."
           />
           <button type="submit" class="search-btn btn btn-15">Search</button>
+        </form>
+        <div class="checkbox_div">
+          <p class="input_p">Change style</p>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
-      
-      </form>
       <div class="gallary"></div>
     </div>
     <script src="./index.js" type="module"></script>
+    <script src="./switcher.js" type="module"></script>
   </body>
 </html>

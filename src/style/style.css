@@ -1,6 +1,6 @@
 body {
   box-sizing: border-box;
-  background-color: #b421fe0f;;
+  background-color: #b421fe0f;
 }
 a {
   text-decoration: none;
@@ -19,8 +19,7 @@ li {
 .b {
   margin: 0 auto;
 }
-img {
-}
+
 .hidden {
   opacity: 0;
   display: none;
@@ -37,10 +36,13 @@ img {
   background-color: #4242426d;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: right;
+  gap: 20px;
+  align-items: center;
 }
 
 form {
+  margin: 0 auto;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -60,19 +62,24 @@ input {
   border: 2px solid rgba(255, 255, 255, 0.3);
   margin-bottom: 0;
   font-size: 16px;
-
 }
 input::placeholder {
-  font-size: 16px;
+  font-size: 14px;
   font-style: 400;
   line-height: calc(20 / 16);
+  color: rgba(255, 255, 255, 0.552);
+
 }
 input:focus::-webkit-input-placeholder {
   color: transparent;
 }
 input:focus,
 input:hover {
-  border-color: #4d5ae571;
+  border-color: #b421fe51;
+}
+.gray {
+  background-color: #42424258
+
 }
 .load-more {
   position: relative;
@@ -131,7 +138,7 @@ input:hover {
   top: 0;
   right: 0;
   z-index: -1;
-  background-color: #673dff85;
+  background-color: #673dff44;
   border-radius: 5px;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
@@ -169,7 +176,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 .info-item {
   display: flex;
