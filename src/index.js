@@ -95,8 +95,8 @@ function markup(response) {
     btn.remove();
   } else {
     makeNewBtn();
-    lightbox.refresh();
     gallery.insertAdjacentHTML('beforeend', dataCardTemp(response));
+    lightbox.refresh();
   }
 }
 
