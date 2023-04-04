@@ -1,0 +1,2 @@
+const e=document.querySelector('[type="checkbox"]');let t;const o=document.querySelectorAll(".btn"),r=document.querySelector("input");function c(){return`#${Math.floor(16777215*Math.random()).toString(16).padStart(6,0)}`}e.addEventListener("click",(e=>{!0===e.target.checked?t=setInterval((()=>{const e=document.querySelector("body");r.style.borderColor=`${c()}`,r.style.opacity="0.5",e.style.backgroundColor=`${c()}`,o.forEach((e=>e.style.backgroundColor=`${c()}`))}),1e3):clearInterval(t)}));
+//# sourceMappingURL=index.32910276.js.map
