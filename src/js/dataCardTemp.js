@@ -8,7 +8,6 @@ export const dataCardTemp = response => {
           <img src="${el.largeImageURL}"alt="${el.tags}"  loading="lazy" />
       </a>
           </div>
-     
           <div class="info">
           <p class="info-item">
             <b>Likes</b>${el.likes}
