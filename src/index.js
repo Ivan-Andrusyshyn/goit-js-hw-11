@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 import { NewApiService } from './fetchFood';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import axios from 'axios';
+import { dataCardTemp } from './dataCardTemp';
 
 const gallary = document.querySelector('.gallary');
 const formGallery = document.querySelector('.search-form');
@@ -101,46 +101,21 @@ function makeNewBtn() {
   btn.textContent = 'Load more';
   wrapDiv.append(btn);
 }
-const dataCardTemp = response => {
-  return response.hits
-    .map(el => {
-      return `<a class="gallery__item" href=${el.webformatURL} ">
-      <div class="photo-card">
-      <img src="${
-        el.webformatURL
-      }" alt="photo" width="${el.webformatWidth = 300}" loading="lazy" />
-      <div class="info">
-        <p class="info-item">
-          <b>Likes</b>${el.likes}
-        </p>
-        <p class="info-item">
-          <b>Views</b>${el.views}
-        </p>
-        <p class="info-item">
-          <b>Comments</b>${el.comments}
-        </p>
-        <p class="info-item">
-          <b>Downloads</b>${el.downloads}
-        </p>
-      </div>
-    </div>
-      </a>`;
-    })
-    .join('');
-};
+
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
 });
-makeSmooth();
 
 function cleanImg() {
   gallary.innerHTML = '';
   btn.remove();
   btnForm.setAttribute('disabled', 'disabled');
 }
-function makeSmooth() {
-  gallary.scrollBy({
-    top: document * 2,
-    behavior: 'smooth',
-  });
-}
+
+let g = wrapDiv.firstElementChild.getBoundingClientRect();
+const { height: cardHeight } = g;
+console.log(g);
+window.scrollBy({
+  top: cardHeight * 2,
+  behavior: 'smooth',
+});
