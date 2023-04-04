@@ -1,12 +1,15 @@
 export const dataCardTemp = response => {
   return response.hits
     .map(el => {
-      return `<a class="gallery__item" href=${el.webformatURL} ">
+      return `
         <div class="photo-card">
-        <img src="${
-          el.webformatURL
-        }" alt="photo" width="${(el.webformatWidth = 300)}" loading="lazy" />
-        <div class="info">
+        <div class="thumb">
+      <a class="gallery__item" href="${el.webformatURL}">       
+          <img src="${el.largeImageURL}"alt="${el.tags}"  loading="lazy" />
+      </a>
+          </div>
+     
+          <div class="info">
           <p class="info-item">
             <b>Likes</b>${el.likes}
           </p>
@@ -21,7 +24,7 @@ export const dataCardTemp = response => {
           </p>
         </div>
       </div>
-        </a>`;
+      `;
     })
     .join('');
 };

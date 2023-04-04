@@ -1,14 +1,16 @@
 import Notiflix from 'notiflix';
-import { NewApiService } from './fetchFood';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import { dataCardTemp } from './dataCardTemp';
+import { NewApiService } from './js/fetchFood';
+import { dataCardTemp } from './js/dataCardTemp';
+console.log(SimpleLightbox);
 
-const gallary = document.querySelector('.gallary');
+const gallery = document.querySelector('.gallery');
 const formGallery = document.querySelector('.search-form');
 const btnForm = document.querySelector('[type="submit"]');
 const wrapDiv = document.querySelector('.wrapp');
 const btn = document.createElement('button');
+const lightbox = new SimpleLightbox('.gallery a', {});
 
 btnForm.setAttribute('disabled', 'disabled');
 formGallery.addEventListener('submit', newPhotoOnSubmit);
@@ -38,6 +40,7 @@ async function makeImgOnSubm() {
     markup(data);
   } catch (err) {
     console.log(err);
+    Notiflix.Notify.failure('Oops, something went wrong...');
   }
 }
 async function makeImgOnClick() {
@@ -48,6 +51,7 @@ async function makeImgOnClick() {
     markup(data);
   } catch (err) {
     console.log(err);
+    Notiflix.Notify.failure('Oops, something went wrong...');
   }
 }
 
@@ -89,7 +93,8 @@ function markup(response) {
     btn.remove();
   } else {
     makeNewBtn();
-    gallary.insertAdjacentHTML('beforeend', dataCardTemp(response));
+    lightbox.refresh();
+    gallery.insertAdjacentHTML('beforeend', dataCardTemp(response));
   }
 }
 
@@ -97,17 +102,12 @@ function makeNewBtn() {
   btn.classList.add('load-more');
   btn.classList.add('btn');
   btn.classList.add('btn-15');
-
   btn.textContent = 'Load more';
   wrapDiv.append(btn);
 }
 
-const lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-});
-
 function cleanImg() {
-  gallary.innerHTML = '';
+  gallery.innerHTML = '';
   btn.remove();
   btnForm.setAttribute('disabled', 'disabled');
 }
