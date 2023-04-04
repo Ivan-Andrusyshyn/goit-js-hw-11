@@ -114,7 +114,6 @@ function cleanImg() {
 
 let g = wrapDiv.firstElementChild.getBoundingClientRect();
 const { height: cardHeight } = g;
-console.log(g);
 window.scrollBy({
   top: cardHeight * 2,
   behavior: 'smooth',

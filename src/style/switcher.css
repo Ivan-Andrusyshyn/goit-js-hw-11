@@ -1,5 +1,5 @@
 .checkbox_div {
-  width: 200px;
+  max-width: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,9 +26,16 @@
   width: 0;
   height: 0;
 }
-.input_p{
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.552);
+.input_p {
+  display: none;
+}
+
+@media screen and (min-width: 480px) {
+  .input_p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.552);
+    display: block;
+  }
 }
 /* The slider */
 .slider {
@@ -78,36 +85,34 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-
 /* ===========================NIGHT STYLE */
-.dark{
+.dark {
   background-color: #2e2f42;
 }
-.main-white{
+.main-white {
   background-color: #ffffff;
 }
-.text-greeting-dark{
+.text-greeting-dark {
   color: #bfc4ff;
 }
-  .block {
-    display: flex;
-    gap: 30px;
+.block {
+  display: flex;
+  gap: 30px;
 }
-.displayNone{
+.displayNone {
   display: none;
 }
-.enter{
+.enter {
   display: flex;
 }
-  .btn-night {
-    background-color: #39218b;
-    fill: #ffffff;
-  }
-  .text-night{
-    color: #bfc4ff;
-  }
-  .div-night{
-    box-shadow: 1px 1px 2px black, 
-    0 0 10px darkviolet, 0 0 5px darkblue;
-    background-color: green;
-  }
+.btn-night {
+  background-color: #39218b;
+  fill: #ffffff;
+}
+.text-night {
+  color: #bfc4ff;
+}
+.div-night {
+  box-shadow: 1px 1px 2px black, 0 0 10px darkviolet, 0 0 5px darkblue;
+  background-color: green;
+}
