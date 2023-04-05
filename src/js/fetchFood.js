@@ -26,4 +26,5 @@ export class NewApiService {
       throw new Error(err.message);
     }
   }
+  
 }

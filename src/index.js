@@ -8,14 +8,14 @@ const gallery = document.querySelector('.gallery');
 const formGallery = document.querySelector('.search-form');
 const btnForm = document.querySelector('[type="submit"]');
 const wrapDiv = document.querySelector('.wrapp');
-const btn = document.createElement('button');
-
+const btnLoadMore = document.querySelector('[is-hidden]');
 const lightbox = new SimpleLightbox('.gallery a', {});
 
 btnForm.setAttribute('disabled', 'disabled');
 formGallery.addEventListener('submit', newPhotoOnSubmit);
-btn.addEventListener('click', createOnClick);
+btnLoadMore.addEventListener('click', createOnClick);
 
+btnLoadMore.classList.add('is-hidden');
 const makeApi = new NewApiService();
 disableBtn(btnForm, formGallery);
 
@@ -27,11 +27,10 @@ function newPhotoOnSubmit(e) {
   if (inputForm === '') return;
   makeImgOnSubm();
   cleanImg();
+  btnLoadMore.classList.remove('is-hidden');
 }
 function createOnClick() {
-  endOfImgNotic();
   makeImgOnSubm();
-  makeIncriment();
 }
 async function makeImgOnSubm() {
   try {
@@ -40,32 +39,31 @@ async function makeImgOnSubm() {
     makeApi.dataSaver = data;
     noticeDeclaretion(data);
     markup(data);
+    makeIncriment();
+    hiddenBtn(data);
   } catch (err) {
     console.log(err);
     Notiflix.Notify.failure('Oops, something went wrong...');
   }
 }
-let count = 0;
+
 function noticeDeclaretion(value) {
-  count += 1;
-  if (value.hits.length == 0) {
+  console.log(value);
+  if (value.hits.length === 0) {
     Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
-  } else if (value.hits.length > 0 && count == 1) {
+  } else if (value.hits.length > 0 && makeApi.page == 1) {
     Notiflix.Notify.success(`Hooray! We found ${value.totalHits} images.`);
-    count = 0;
-  }
-}
-function endOfImgNotic() {
-  if (makeApi.lengOfValue < 40) {
-    btn.remove();
+  } else if (makeApi.lengOfValue < 40) {
     Notiflix.Notify.info(
       "We're sorry, but you've reached the end of search results."
     );
     btnForm.removeAttribute('disabled');
   }
 }
+// btnLoadMore.classList.add('is-hidden');
+
 btnForm.setAttribute('disabled', 'disabled');
 function disableBtn(btnForm, formGallery) {
   let input = formGallery.firstElementChild;
@@ -81,27 +79,22 @@ function disableBtn(btnForm, formGallery) {
 }
 
 function markup(response) {
-  btn.remove();
-  if (response.total > 40) {
-    makeNewBtn();
-  }
   gallery.insertAdjacentHTML('beforeend', dataCardTemp(response));
   lightbox.refresh();
 }
 function makeIncriment() {
   makeApi.page += 1;
 }
-function makeNewBtn() {
-  btn.classList.add('load-more');
-  btn.classList.add('btn');
-  btn.classList.add('btn-15');
-  btn.textContent = 'Load more';
-  wrapDiv.append(btn);
+function hiddenBtn(value) {
+  if (value.hits.length < 40) {
+    btnLoadMore.classList.add('is-hidden');
+    return;
+  }
 }
 
 function cleanImg() {
   gallery.innerHTML = '';
-  btn.remove();
+  btnLoadMore.classList.add('is-hidden');
   btnForm.setAttribute('disabled', 'disabled');
 }
 

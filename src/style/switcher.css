@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 10px;
+  flex-direction: column;
   z-index: 3;
   gap: 10px;
   font-size: 14px;
@@ -29,18 +29,25 @@
 .input_p {
   display: none;
 }
-
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 768px) {
+  .input_p {
+    color: rgba(255, 255, 255, 0.552);
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 768px) {
   .input_p {
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.552);
     display: block;
+  }
+  .checkbox_div {
+    flex-direction: row;
   }
 }
 /* The slider */
 .slider {
   position: absolute;
-  cursor: pointer;
+  /* cursor: pointer; */
   top: 0;
   left: 0;
   right: 0;
