@@ -31,6 +31,7 @@ img {
   margin: 0 auto;
   display: flex;
   gap: 20px;
+  padding: 0 10px;
   flex-wrap: wrap;
   max-width: 1600px;
   justify-content: center;
@@ -149,7 +150,7 @@ input:focus::-webkit-input-placeholder {
 }
 .load-more {
   z-index: 3;
-  width: 60px;
+  width: 90px;
   height: 26px;
   color: #fff;
   border-radius: 10px;
@@ -183,7 +184,6 @@ input:focus::-webkit-input-placeholder {
     height: 30px;
   }
   .load-more {
-    width: 90px;
     height: 30px;
   }
 }
@@ -260,7 +260,7 @@ p {
   margin: 0;
 }
 .photo-card {
-  width: 350px;
+  width: 100%;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
@@ -269,7 +269,11 @@ p {
   background-color: rgba(255, 255, 255, 0.708);
   cursor: pointer;
 }
-
+@media screen and (min-width: 480px) {
+  .photo-card {
+    width: 350px;
+  }
+}
 .photo-card:hover {
   transform: scale(1.02);
 }
