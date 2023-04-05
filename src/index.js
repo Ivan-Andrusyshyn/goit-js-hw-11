@@ -4,13 +4,12 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { NewApiService } from './js/fetchFood';
 import { dataCardTemp } from './js/dataCardTemp';
 
-console.log(SimpleLightbox);
-
 const gallery = document.querySelector('.gallery');
 const formGallery = document.querySelector('.search-form');
 const btnForm = document.querySelector('[type="submit"]');
 const wrapDiv = document.querySelector('.wrapp');
 const btn = document.createElement('button');
+
 const lightbox = new SimpleLightbox('.gallery a', {});
 
 btnForm.setAttribute('disabled', 'disabled');
@@ -30,7 +29,9 @@ function newPhotoOnSubmit(e) {
   cleanImg();
 }
 function createOnClick() {
-  makeImgOnClick();
+  endOfImgNotic();
+  makeImgOnSubm();
+  makeIncriment();
 }
 async function makeImgOnSubm() {
   try {
@@ -44,38 +45,27 @@ async function makeImgOnSubm() {
     Notiflix.Notify.failure('Oops, something went wrong...');
   }
 }
-async function makeImgOnClick() {
-  makeApi.page += 1;
-  try {
-    const { data } = await makeApi.makeFetch();
-    newNotice(data);
-    markup(data);
-  } catch (err) {
-    console.log(err);
-    Notiflix.Notify.failure('Oops, something went wrong...');
-  }
-}
-
+let count = 0;
 function noticeDeclaretion(value) {
+  count += 1;
   if (value.hits.length == 0) {
     Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
-  } else {
+  } else if (value.hits.length > 0 && count == 1) {
     Notiflix.Notify.success(`Hooray! We found ${value.totalHits} images.`);
+    count = 0;
   }
 }
-
-function newNotice(value) {
-  if (value.hits.length < 40) {
+function endOfImgNotic() {
+  if (makeApi.lengOfValue < 40) {
     btn.remove();
     Notiflix.Notify.info(
       "We're sorry, but you've reached the end of search results."
     );
+    btnForm.removeAttribute('disabled');
   }
-  btnForm.removeAttribute('disabled');
 }
-
 btnForm.setAttribute('disabled', 'disabled');
 function disableBtn(btnForm, formGallery) {
   let input = formGallery.firstElementChild;
@@ -91,15 +81,16 @@ function disableBtn(btnForm, formGallery) {
 }
 
 function markup(response) {
-  if (response.hits.length == 0) {
-    btn.remove();
-  } else {
+  btn.remove();
+  if (response.total > 40) {
     makeNewBtn();
-    gallery.insertAdjacentHTML('beforeend', dataCardTemp(response));
-    lightbox.refresh();
   }
+  gallery.insertAdjacentHTML('beforeend', dataCardTemp(response));
+  lightbox.refresh();
 }
-
+function makeIncriment() {
+  makeApi.page += 1;
+}
 function makeNewBtn() {
   btn.classList.add('load-more');
   btn.classList.add('btn');

@@ -5,6 +5,7 @@ export class NewApiService {
   page = 1;
   query = null;
   per_page = 40;
+  dataSaver = null;
   async makeFetch() {
     try {
       return await axios.get(
@@ -25,8 +26,4 @@ export class NewApiService {
       throw new Error(err.message);
     }
   }
-}
-
-function increment() {
-  page += 1;
 }
