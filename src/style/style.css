@@ -145,6 +145,8 @@ input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.552);
 }
 .search-svg {
+  bottom: -8px;
+  position: absolute;
   z-index: 3;
   height: 17px;
   width: 17px;
