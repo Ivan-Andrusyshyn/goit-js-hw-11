@@ -11,13 +11,11 @@ const wrapDiv = document.querySelector('.wrapp');
 const btnLoadMore = document.querySelector('[is-hidden]');
 const lightbox = new SimpleLightbox('.gallery a', {});
 
-btnForm.setAttribute('disabled', 'disabled');
 formGallery.addEventListener('submit', newPhotoOnSubmit);
 btnLoadMore.addEventListener('click', createOnClick);
 
 btnLoadMore.classList.add('is-hidden');
 const makeApi = new NewApiService();
-disableBtn(btnForm, formGallery);
 
 function newPhotoOnSubmit(e) {
   e.preventDefault();
@@ -60,20 +58,7 @@ function noticeDeclaretion(value) {
     btnForm.removeAttribute('disabled');
   }
 }
-// btnLoadMore.classList.add('is-hidden');
-
-btnForm.setAttribute('disabled', 'disabled');
-function disableBtn(btnForm, formGallery) {
-  let input = formGallery.firstElementChild;
-  input.addEventListener('input', e => {
-    const target = e.target.value;
-    if (target == '') {
-      return;
-    } else {
-      btnForm.removeAttribute('disabled');
-    }
-  });
-}
+btnLoadMore.classList.add('is-hidden');
 
 function markup(response) {
   gallery.insertAdjacentHTML('beforeend', dataCardTemp(response));
@@ -93,7 +78,6 @@ function hiddenBtn(value) {
 function cleanImg() {
   gallery.innerHTML = '';
   btnLoadMore.classList.add('is-hidden');
-  btnForm.setAttribute('disabled', 'disabled');
 }
 
 let g = wrapDiv.firstElementChild.getBoundingClientRect();
