@@ -80,8 +80,8 @@ function cleanImg() {
   btnLoadMore.classList.add('is-hidden');
 }
 
-let g = wrapDiv.firstElementChild.getBoundingClientRect();
-const { height: cardHeight } = g;
+let hScreen = wrapDiv.firstElementChild.getBoundingClientRect();
+const { height: cardHeight } = hScreen;
 window.scrollBy({
   top: cardHeight * 2,
   behavior: 'smooth',
