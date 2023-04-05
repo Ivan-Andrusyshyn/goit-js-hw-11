@@ -20,7 +20,9 @@ function makeStyle() {
   formGallery.firstElementChild.style.opacity = '0.5';
   btnLoadMore.style.backgroundColor = `${style}`;
   body.style.backgroundColor = `${style}`;
-  formGallery.lastElementChild.style.backgroundColor = `${style}`;
+  if (screen.availWidth > 500) {
+    formGallery.lastElementChild.style.backgroundColor = `${style}`;
+  }
 }
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
@@ -30,3 +32,4 @@ function getRandomHexColor() {
 function stopChangeColorOnClick(e) {
   clearInterval(intervalID);
 }
+console.log();
