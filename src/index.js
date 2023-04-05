@@ -67,9 +67,8 @@ function disableBtn(btnForm, formGallery) {
   let input = formGallery.firstElementChild;
   input.addEventListener('input', e => {
     const target = e.target.value;
-    cleanImg();
     if (target == '') {
-      cleanImg();
+      return;
     } else {
       btnForm.removeAttribute('disabled');
     }
