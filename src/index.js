@@ -47,7 +47,6 @@ async function makeImgOnSubm() {
 }
 
 function noticeDeclaretion(value) {
-  console.log(value);
   if (value.hits.length === 0) {
     Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
