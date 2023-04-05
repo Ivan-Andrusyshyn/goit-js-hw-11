@@ -3,7 +3,9 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { NewApiService } from './js/fetchFood';
 import { dataCardTemp } from './js/dataCardTemp';
+let debounce = require('lodash.debounce');
 
+const DEBOUNCE_DELAY = 300;
 const gallery = document.querySelector('.gallery');
 const formGallery = document.querySelector('.search-form');
 const btnForm = document.querySelector('[type="submit"]');
@@ -27,7 +29,7 @@ function newPhotoOnSubmit(e) {
   if (inputForm === '') return;
   makeImgOnSubm();
   cleanImg();
-  btnLoadMore.classList.remove('is-hidden');
+  debounce(btnLoadMore.classList.remove('is-hidden'), DEBOUNCE_DELAY);
 }
 function createOnClick() {
   makeImgOnSubm();
