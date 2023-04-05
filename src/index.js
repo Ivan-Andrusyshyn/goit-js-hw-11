@@ -5,7 +5,7 @@ import { NewApiService } from './js/fetchFood';
 import { dataCardTemp } from './js/dataCardTemp';
 let debounce = require('lodash.debounce');
 
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 400;
 const gallery = document.querySelector('.gallery');
 const formGallery = document.querySelector('.search-form');
 const btnForm = document.querySelector('[type="submit"]');
@@ -29,7 +29,6 @@ function newPhotoOnSubmit(e) {
   if (inputForm === '') return;
   makeImgOnSubm();
   cleanImg();
-  debounce(btnLoadMore.classList.remove('is-hidden'), DEBOUNCE_DELAY);
 }
 function createOnClick() {
   makeImgOnSubm();
@@ -92,6 +91,7 @@ function hiddenBtn(value) {
     btnLoadMore.classList.add('is-hidden');
     return;
   }
+  btnLoadMore.classList.remove('is-hidden');
 }
 
 function cleanImg() {
