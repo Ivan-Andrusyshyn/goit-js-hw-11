@@ -47,13 +47,17 @@ async function makeImgOnSubm() {
 function noticeDeclaretion(value) {
   if (value.hits.length === 0) {
     Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
+      'Sorry, there are no images matching your search query. Please try again.',
+      { timeout: 3000 }
     );
   } else if (value.hits.length > 0 && makeApi.page == 1) {
-    Notiflix.Notify.success(`Hooray! We found ${value.totalHits} images.`);
+    Notiflix.Notify.success(`Hooray! We found ${value.totalHits} images.`, {
+      timeout: 2000,
+    });
   } else if (makeApi.lengOfValue < 40) {
     Notiflix.Notify.info(
-      "We're sorry, but you've reached the end of search results."
+      "We're sorry, but you've reached the end of search results.",
+      { timeout: 3000 }
     );
     btnForm.removeAttribute('disabled');
   }
