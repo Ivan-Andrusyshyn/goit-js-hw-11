@@ -137,6 +137,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 .btn {
+  z-index: 2;
   right: 40%;
   left: 60%;
   position: absolute;
@@ -144,12 +145,14 @@ input:focus::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.552);
 }
 .search-svg {
+  z-index: 2;
   height: 17px;
   width: 17px;
   fill: rgba(255, 255, 255, 0.923);
 }
 .search-svg:active {
- fill: rgba(255, 255, 255, 0.599);}
+  fill: rgba(255, 255, 255, 0.599);
+}
 .search-btn {
   font-size: 0;
 }
