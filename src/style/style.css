@@ -153,7 +153,7 @@ input:focus::-webkit-input-placeholder {
   align-items: center;
 }
 .search-btn {
-  background: #b421fe51;
+  background-color: #b421fe2a;
 }
 .load-more {
   z-index: 3;
@@ -247,10 +247,10 @@ input:focus::-webkit-input-placeholder {
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   transition: all 0.7s ease;
 }
-.form_wrapp:hover:after {
+/* .form_wrapp:hover:after {
   left: 0;
   width: 100%;
-}
+} */
 .btn-15:hover {
   color: #fff;
   fill: pink;
