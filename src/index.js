@@ -49,7 +49,6 @@ function btnHidden() {
     return;
   } else if (makeApi.page == 13) {
     btnLoadMore.classList.add('is-hidden');
-    return;
   }
   btnLoadMore.classList.remove('is-hidden');
 }
