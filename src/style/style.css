@@ -27,11 +27,7 @@ img {
   max-width: 100%;
   height: auto;
 }
-.is-hidden {
-  display: none;
-  overflow: hidden;
-  opacity: 0;
-}
+
 .gallery {
   margin: 0 auto;
   display: flex;
@@ -334,4 +330,9 @@ p {
 img {
   width: 100%;
   height: 200px;
+}
+.is-hidden {
+  display: none;
+  overflow: hidden;
+  opacity: 0;
 }

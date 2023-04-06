@@ -4,27 +4,21 @@ export class NewApiService {
   #KEY = 'key=34935251-caa237a886f8fd2167ae0727c';
   page = 1;
   query = null;
-  per_page = 40;
   dataSaver = null;
   async makeFetch() {
     try {
-      return await axios.get(
-        `${this.#URL}?${this.#KEY}&q=${
-          this.query
-        }&image_type=photo&orientation=horizontal&safesearch=true&page=${
-          this.page
-        }&per_page=${this.per_page}`,
-        {
-          params: {
-            query: this.query,
-            page: this.page,
-            per_page: this.per_page,
-          },
-        }
-      );
+      return await axios.get(`${this.#URL}?${this.#KEY}`, {
+        params: {
+          q: this.query,
+          image_type: 'photo',
+          orientation: 'horizontal',
+          safesearch: true,
+          page: this.page,
+          per_page: 40,
+        },
+      });
     } catch (err) {
       throw new Error(err.message);
     }
   }
-  
 }

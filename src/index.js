@@ -14,7 +14,6 @@ const lightbox = new SimpleLightbox('.gallery a', {});
 formGallery.addEventListener('submit', newPhotoOnSubmit);
 btnLoadMore.addEventListener('click', createOnClick);
 
-btnLoadMore.classList.add('is-hidden');
 const makeApi = new NewApiService();
 
 function newPhotoOnSubmit(e) {
@@ -36,14 +35,24 @@ async function makeImgOnSubm() {
     makeApi.dataSaver = data;
     noticeDeclaretion(data);
     markup(data);
+    scrollSmooth();
     makeIncriment();
-    hiddenBtn(data);
+    btnHidden();
   } catch (err) {
     console.log(err);
     Notiflix.Notify.failure('Oops, something went wrong...');
   }
 }
-
+function btnHidden() {
+  if (makeApi.lengOfValue < 40) {
+    btnLoadMore.classList.add('is-hidden');
+    return;
+  } else if (makeApi.page == 13) {
+    btnLoadMore.classList.add('is-hidden');
+    return;
+  }
+  btnLoadMore.classList.remove('is-hidden');
+}
 function noticeDeclaretion(value) {
   if (value.hits.length === 0) {
     Notiflix.Notify.failure(
@@ -62,7 +71,6 @@ function noticeDeclaretion(value) {
     btnForm.removeAttribute('disabled');
   }
 }
-btnLoadMore.classList.add('is-hidden');
 
 function markup(response) {
   gallery.insertAdjacentHTML('beforeend', dataCardTemp(response));
@@ -71,22 +79,16 @@ function markup(response) {
 function makeIncriment() {
   makeApi.page += 1;
 }
-function hiddenBtn(value) {
-  if (value.hits.length < 40) {
-    btnLoadMore.classList.add('is-hidden');
-    return;
-  }
-  btnLoadMore.classList.remove('is-hidden');
-}
 
 function cleanImg() {
   gallery.innerHTML = '';
   btnLoadMore.classList.add('is-hidden');
 }
-
-let hScreen = wrapDiv.firstElementChild.getBoundingClientRect();
-const { height: cardHeight } = hScreen;
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: 'smooth',
-});
+function scrollSmooth() {
+  let hScreen = wrapDiv.firstElementChild.getBoundingClientRect();
+  const { height: cardHeight } = hScreen;
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+}
