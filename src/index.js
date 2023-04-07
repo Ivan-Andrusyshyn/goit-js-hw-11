@@ -48,6 +48,10 @@ function btnHidden() {
     btnLoadMore.classList.add('is-hidden');
     return;
   } else if (makeApi.page == 13) {
+    Notiflix.Notify.info(
+      "We're sorry, but you've reached the end of search results.",
+      { timeout: 3000 }
+    );
     btnLoadMore.classList.add('is-hidden');
     return;
   }
